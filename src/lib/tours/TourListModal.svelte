@@ -63,7 +63,7 @@
           <ul>
             {#each tours as tour}
               {#if tour?.metadataJson?.title}
-                <li
+                <button
                   onclick={() => {
                     startTour(tour.id);
                   }}
@@ -74,7 +74,7 @@
                     class="mr-1 inline text-sm text-slate-100 group-hover:text-red-900"
                   />
                   {tour.metadataJson.title}
-                </li>
+                </button>
               {/if}
             {/each}
           </ul>

@@ -22,7 +22,7 @@
         "baseLayerId": "maptiler-streets"
     },
     "coverageDescriptiveList": "https://raw.githubusercontent.com/bplmaps/lmec-digital-library-metadata/refs/heads/main/atlascope/atlascope-starter/coverage-list.json",
-    "historicLayersFootprintsFile": "https://raw.githubusercontent.com/bplmaps/lmec-digital-library-metadata/refs/heads/main/atlascope/atlascope-starter/boston-volume-extents.geojson",
+    "historicLayersFootprintsFile": "https://raw.githubusercontent.com/bplmaps/lmec-digital-library-metadata/refs/heads/main/atlascope/atlascope-starter/boston-volume-extents.topojson",
     "footprintsDissolved": "https://raw.githubusercontent.com/bplmaps/lmec-digital-library-metadata/refs/heads/main/atlascope/atlascope-starter/boston-volume-extents-dissolved.geojson",
     "referenceLayers": "https://raw.githubusercontent.com/bplmaps/lmec-digital-library-metadata/refs/heads/main/atlascope/atlascope-starter/reference-layers.json",
     "geocodeKey": "DY88zutnCSJjg1OmMrUF",

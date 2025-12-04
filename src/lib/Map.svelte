@@ -2,11 +2,7 @@
   import { onMount } from "svelte";
 
   import Fa from "svelte-fa";
-  import {
-    faHand,
-    faPenToSquare,
-    faStopCircle,
-  } from "@fortawesome/free-solid-svg-icons";
+  import { faHand, faPenToSquare, faStopCircle } from "@fortawesome/free-solid-svg-icons";
 
   import AtlascopeLogo from "./ui/AtlascopeLogo.svelte";
   import MapControls from "./mapControls/ControlPanel.svelte";
@@ -30,11 +26,7 @@
   import { Fill, Stroke, Style, Circle } from "ol/style";
 
   import { intersector } from "./helpers/intersector";
-  import {
-    getAnnotationsWithinExtent,
-    getSingleAnnotation,
-  } from "./helpers/supabaseFunctions";
-
+  import { getAnnotationsWithinExtent, getSingleAnnotation } from "./helpers/supabaseFunctions";
   import { mapState, appState, allLayers, referenceLayers } from "./state.svelte.js";
   import instanceVariables from "../config/instance.json";
 
@@ -222,16 +214,9 @@
     map.removeLayer(annotationDrawerLayer);
   }
 
-  function cancelAnnotation() {
-    map.addInteraction(annotationDrawer);
-    mapState.annotationEntry = false;
-    annotationDrawerGeometrySource.clear();
-  }
-
   function loadAnnotations() {
     loadedAnnotationsList = [];
     getAnnotationsWithinExtent(view.calculateExtent()).then((d) => {
-      console.log(d);
       d.forEach((x) => {
         getSingleAnnotation(x.id).then((annotation) => {
           loadedAnnotationsList = [...loadedAnnotationsList, annotation];
@@ -312,7 +297,7 @@
         olLayers.overlay.setOpacity(opacitySliderValue / 100);
       } else {
         olLayers.overlay.setOpacity(1);
-        const ctx = event.context;
+        const ctx = /** @type {CanvasRenderingContext2D} */ (event.context);
 
         ctx.save();
         ctx.beginPath();
@@ -367,7 +352,7 @@
 
     // after rendering the layer, restore the canvas context
     olLayers.overlay.on("postrender", function (event) {
-      var ctx = event.context;
+      let ctx = /** @type {CanvasRenderingContext2D} */ (event.context);
       ctx.restore();
     });
 
@@ -537,7 +522,6 @@
       pos={annotationEntryCoords}
       featureExtent={annotationExtentCoords}
       layerID={mapState.layers.overlay.id}
-      on:cancel={cancelAnnotation}
     />
   {/if}
 
@@ -549,7 +533,7 @@
     />
   {/if}
 
-  {#if !mapState.annotationMode && loadedAnnotationsList.length === 0 && !appState.tour.active}
+  {#if loadedAnnotationsList.length === 0 && !appState.tour.active}
     <MapControls />
   {/if}
 </section>

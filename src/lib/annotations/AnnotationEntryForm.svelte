@@ -84,7 +84,7 @@
                     class="flex items-center py-2 px-3 border-t"
                 >
                     <button
-                        on:click|preventDefault={processAnnotationSubmission}
+                        onclick={processAnnotationSubmission}
                         disabled={processing}
                         type="submit"
                         class="inline-flex items-center py-2 px-3 mr-2 text-sm border border-blue-900 text-blue-900 hover:bg-blue-50 font-medium text-center rounded-lg focus:ring-4 focus:ring-blue-200"
@@ -93,7 +93,7 @@
                     </button>
                     {#if !processing}
                         <button
-                            on:click={cancelAnnotationEntry}
+                            onclick={cancelAnnotationEntry}
                             class="inline-flex items-center py-2 px-3 mr-2 text-sm border border-red-900 text-red-900 hover:bg-red-50 font-medium text-center rounded-lg focus:ring-4 focus:ring-blue-200"
                         >
                             Cancel
